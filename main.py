@@ -13,7 +13,11 @@ def main():
     client = slack_sdk.WebhookClient(settings.slack_webhook)
 
     while True:
-        output = os.system(settings.command)
+        output = os.popen(settings.command)
+        output=output.read()
+        if output.isdigit():
+            output=int(output)
+
         if not output:
             client.send(text=settings.message)
         time.sleep(settings.period)

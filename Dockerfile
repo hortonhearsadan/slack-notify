@@ -7,7 +7,7 @@ RUN add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debia
 RUN apt-get update
 RUN apt-get -y install docker-ce
 
-
+LABEL maintainer="Daniel Horton"
 
 COPY ./ /app/
 
