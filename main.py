@@ -14,10 +14,11 @@ def main():
 
     while True:
         output = os.popen(settings.command)
-        output=output.read()
+        output=output.read().strip()
+        logger.info(output)
         if output.isdigit():
             output=int(output)
-
+        logger.info(f"{output}")
         if not output:
             client.send(text=settings.message)
         time.sleep(settings.period)
